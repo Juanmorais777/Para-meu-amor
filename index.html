@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para meu amor</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        .heart-text {
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+            color: #ff69a0; /* pink */
+            text-shadow: 0 0 5px #ff69a0, 0 0 10px #ff69a0, 0 0 20px #ff69a0;
+        }
+    </style>
+</head>
+</html> 
+
+<body>
+    <script>
+        const messages = [
+            { fontSize: '60px', text: "❤️" },
+            { fontSize: '60px', text: "❤️" },
+            { fontSize: '60px', text: "❤️" },
+            { fontSize: '70px', text: "❤️" },
+            { fontSize: '80px', text: "❤️" },
+            { fontSize: '80px', text: "❤️" },
+            { fontSize: '80px', text: "❤️" },
+            { fontSize: '80px', text: "❤️" },
+            { fontSize: '80px', text: "❤️" },
+            { fontSize: '88px', text: "❤️" },
+            { fontSize: '90px', text: "❤️" },
+            { fontSize: '50px', text: "Minha princesa" },
+            { fontSize: '50px', text: "Eu te amo muito!" },
+            { fontSize: '50px', text: "Você é meu tudo" },
+            { fontSize: '50px', text: "Para sempre juntos" },
+            { fontSize: '50px', text: "Meu amor eterno"},
+            { fontSize: '50px', text: "Você é minha vida"},
+            { fontSize: '50px', text: "❤️" },
+            {fontSize: '100px', text: "❤️" },
+            {fontSize: '120px', text: "❤️" }
+        ];
+
+        function createHeartText() {
+            const text = document.createElement('div');
+            text.className = 'heart-text';
+            const msg = messages[Math.floor(Math.random() * messages.length)];
+            text.innerText = msg.text;
+            text.style.left = Math.random() * window.innerWidth + 'px';
+            text.style.top = Math.random() * window.innerHeight + 'px';
+            text.style.fontSize = msg.fontSize;
+            document.body.appendChild(text);
+
+            let opacity = 1;
+            const fadeOut = setInterval(() => {
+                opacity -= 0.01;
+                if (opacity <= 0) {
+                    clearInterval(fadeOut);
+                    document.body.removeChild(text);
+                } else {
+                    text.style.opacity = opacity;
+                }
+            }, 50);
+        }
+
+        setInterval(createHeartText, 300);
+    </script>
